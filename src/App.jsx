@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import Antigravity from './components/Antigravity';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import VideoShowcase from './components/VideoShowcase';
 import Features from './components/Features';
 import { motion } from 'framer-motion';
 import {
@@ -316,6 +317,9 @@ function App() {
       <main style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
         <div style={{ pointerEvents: 'auto' }}>
           <Hero />
+
+          {/* ─── Video Showcase (GSAP Parallax) ─── */}
+          <VideoShowcase />
 
           <div className="section-divider" />
 
