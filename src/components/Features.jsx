@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mic, Brain, Shield, Waves, Zap, Globe } from 'lucide-react';
-import { SpotlightCard } from './ui/spotlight-card';
+import HolographicCard from './ui/holographic-card';
 
 const features = [
   {
@@ -46,16 +46,14 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
       ease: [0.16, 1, 0.3, 1],
     }}
     viewport={{ once: true, margin: '-50px' }}
+    style={{ perspective: '1000px' }}
   >
-    <SpotlightCard
-      glowColor="purple"
+    <HolographicCard
       style={{
         padding: '36px 32px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0',
-        height: '100%',
+        borderRadius: '24px',
         cursor: 'default',
+        height: '100%'
       }}
     >
       <div
@@ -70,8 +68,6 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
           justifyContent: 'center',
           marginBottom: '24px',
           color: 'var(--brand-purple)',
-          position: 'relative',
-          zIndex: 2,
         }}
       >
         <Icon size={22} strokeWidth={1.8} />
@@ -82,8 +78,6 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
           color: 'var(--text-primary)',
           fontWeight: 500,
           fontSize: '1.05rem',
-          position: 'relative',
-          zIndex: 2,
         }}
       >
         {title}
@@ -93,13 +87,11 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
           fontSize: '0.92rem',
           lineHeight: 1.7,
           color: 'var(--text-secondary)',
-          position: 'relative',
-          zIndex: 2,
         }}
       >
         {description}
       </p>
-    </SpotlightCard>
+    </HolographicCard>
   </motion.div>
 );
 
@@ -132,7 +124,7 @@ const Features = () => {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '16px',
+          gap: '20px',
         }}>
           {features.map((feature, i) => (
             <FeatureCard key={feature.title} {...feature} index={i} />
