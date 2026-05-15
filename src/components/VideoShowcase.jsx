@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,28 +7,55 @@ gsap.registerPlugin(ScrollTrigger);
 export default function VideoShowcase() {
   const sectionRef = useRef(null);
   const videoContainerRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const cursorBubbleRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const mousePos = useRef({ x: 0, y: 0 });
+  const bubblePos = useRef({ x: 0, y: 0 });
+  const rafId = useRef(null);
 
+  // Smooth cursor-follower animation loop
+  const animateBubble = useCallback(() => {
+    const bubble = cursorBubbleRef.current;
+    if (!bubble) return;
+
+    bubblePos.current.x += (mousePos.current.x - bubblePos.current.x) * 0.15;
+    bubblePos.current.y += (mousePos.current.y - bubblePos.current.y) * 0.15;
+
+    bubble.style.transform = `translate(${bubblePos.current.x}px, ${bubblePos.current.y}px) translate(-50%, -50%)`;
+
+    rafId.current = requestAnimationFrame(animateBubble);
+  }, []);
+
+  useEffect(() => {
+    rafId.current = requestAnimationFrame(animateBubble);
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+    };
+  }, [animateBubble]);
+
+  const handleMouseMove = (e) => {
+    const rect = videoContainerRef.current.getBoundingClientRect();
+    mousePos.current.x = e.clientX - rect.left;
+    mousePos.current.y = e.clientY - rect.top;
+  };
+
+  // GSAP scroll animation
   useEffect(() => {
     const section = sectionRef.current;
     const videoContainer = videoContainerRef.current;
 
-    // GSAP parallax: video rises from below with scale
     gsap.set(videoContainer, {
-      y: 200,
-      scale: 0.88,
+      y: 280,
+      scale: 0.85,
       opacity: 0,
-      borderRadius: '32px',
     });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top 90%',
-        end: 'top 10%',
+        start: 'top 95%',
+        end: 'top 15%',
         scrub: 1.2,
-        // markers: false,
       },
     });
 
@@ -36,7 +63,6 @@ export default function VideoShowcase() {
       y: 0,
       scale: 1,
       opacity: 1,
-      borderRadius: '24px',
       duration: 1,
       ease: 'power2.out',
     });
@@ -44,176 +70,118 @@ export default function VideoShowcase() {
     // Subtle parallax on continued scroll
     ScrollTrigger.create({
       trigger: section,
-      start: 'top top',
+      start: 'center center',
       end: 'bottom top',
       scrub: 1.5,
       onUpdate: (self) => {
-        const progress = self.progress;
         gsap.set(videoContainer, {
-          y: progress * -60,
+          y: self.progress * -40,
         });
       },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
-
-  const handlePlayClick = () => {
-    setIsPlaying(true);
-  };
 
   return (
     <section
       ref={sectionRef}
       style={{
-        padding: '40px 0 160px',
+        padding: '20px 0 140px',
         position: 'relative',
         overflow: 'visible',
       }}
     >
+      {/* Full-width container with 5px padding */}
       <div
         style={{
-          maxWidth: '1120px',
-          margin: '0 auto',
-          padding: '0 24px',
+          width: '100%',
+          padding: '0 5px',
+          boxSizing: 'border-box',
         }}
       >
         <div
           ref={videoContainerRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onClick={!isPlaying ? handlePlayClick : undefined}
+          onMouseMove={handleMouseMove}
           style={{
             position: 'relative',
             width: '100%',
             aspectRatio: '16 / 9',
-            borderRadius: '24px',
+            borderRadius: '16px',
             overflow: 'hidden',
             background: '#0a0a0a',
-            boxShadow: '0 40px 120px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.08)',
-            cursor: isPlaying ? 'default' : 'pointer',
+            boxShadow: '0 40px 120px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.06)',
+            cursor: 'none',
             transform: 'translateZ(0)',
             willChange: 'transform, opacity',
           }}
         >
-          {/* Custom play cursor overlay */}
-          {!isPlaying && (
-            <div
+          {/* Cursor-following bubble */}
+          <div
+            ref={cursorBubbleRef}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '120px',
+              height: '120px',
+              borderRadius: '50%',
+              background: 'rgba(197, 163, 255, 0.9)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              pointerEvents: 'none',
+              zIndex: 10,
+              opacity: isHovered ? 1 : 0,
+              scale: isHovered ? '1' : '0.4',
+              transition: 'opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), scale 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+              backdropFilter: 'blur(8px)',
+              boxShadow: '0 8px 32px rgba(197, 163, 255, 0.3)',
+            }}
+          >
+            <span
               style={{
-                position: 'absolute',
-                inset: 0,
-                zIndex: 3,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: isHovered
-                  ? 'rgba(0, 0, 0, 0.25)'
-                  : 'rgba(0, 0, 0, 0.35)',
-                transition: 'background 0.4s ease',
-                cursor: 'pointer',
+                color: '#1a1a1a',
+                fontSize: '0.8rem',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                userSelect: 'none',
               }}
             >
-              {/* Play button */}
-              <div
-                style={{
-                  width: isHovered ? '88px' : '80px',
-                  height: isHovered ? '88px' : '80px',
-                  borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: isHovered
-                    ? '0 8px 40px rgba(0, 0, 0, 0.3)'
-                    : '0 4px 20px rgba(0, 0, 0, 0.2)',
-                }}
-              >
-                {/* Triangle play icon */}
-                <svg
-                  width="24"
-                  height="28"
-                  viewBox="0 0 24 28"
-                  fill="none"
-                  style={{
-                    marginLeft: '3px',
-                    transition: 'transform 0.3s ease',
-                    transform: isHovered ? 'scale(1.1)' : 'scale(1)',
-                  }}
-                >
-                  <path
-                    d="M22 14L2 26V2L22 14Z"
-                    fill="#1a1a1a"
-                  />
-                </svg>
-              </div>
+              Play Video
+            </span>
+          </div>
 
-              {/* "Play Video" text label */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '32px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  fontSize: '0.85rem',
-                  fontFamily: 'var(--font-body)',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  opacity: isHovered ? 1 : 0.7,
-                  transition: 'opacity 0.3s ease',
-                }}
-              >
-                Play Video
-              </div>
-            </div>
-          )}
+          {/* YouTube iframe — autoplay muted */}
+          <iframe
+            src="https://www.youtube.com/embed/XM_Zfihnkb4?autoplay=1&mute=1&loop=1&playlist=XM_Zfihnkb4&rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0"
+            title="Hearly Demo"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              border: 'none',
+              zIndex: 1,
+            }}
+          />
 
-          {/* YouTube Thumbnail (before play) */}
-          {!isPlaying && (
-            <img
-              src="https://img.youtube.com/vi/XM_Zfihnkb4/maxresdefault.jpg"
-              alt="Hearly Demo Video"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 1,
-              }}
-            />
-          )}
-
-          {/* YouTube iframe (after play) */}
-          {isPlaying && (
-            <iframe
-              src="https://www.youtube.com/embed/XM_Zfihnkb4?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-              title="Hearly Demo"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-              style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                border: 'none',
-                zIndex: 2,
-              }}
-            />
-          )}
-
-          {/* Subtle inner border */}
+          {/* Subtle inner border for depth */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              borderRadius: '24px',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              zIndex: 4,
+              borderRadius: '16px',
+              border: '1px solid rgba(255, 255, 255, 0.06)',
+              zIndex: 5,
               pointerEvents: 'none',
             }}
           />
