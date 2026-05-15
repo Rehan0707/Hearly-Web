@@ -4,6 +4,7 @@ import Antigravity from './components/Antigravity';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import VideoShowcase from './components/VideoShowcase';
+import StoryScrollDemo from './components/StoryScrollDemo';
 import Features from './components/Features';
 import { motion } from 'framer-motion';
 import {
@@ -320,6 +321,9 @@ function App() {
 
           {/* ─── Video Showcase (GSAP Parallax) ─── */}
           <VideoShowcase />
+
+          {/* ─── Story Scroll Flow Art ─── */}
+          <StoryScrollDemo />
 
           <div className="section-divider" />
 
