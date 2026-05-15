@@ -67,7 +67,7 @@ const HolographicCard = ({ children, className = '', style = {} }) => {
                 backgroundColor: 'rgba(255, 255, 255, 0.6)',
                 backdropFilter: 'blur(10px)',
                 borderRadius: 'inherit',
-                border: '1px solid rgba(197, 163, 255, 0.2)',
+                border: '1px solid rgba(171, 21, 9, 0.2)',
                 boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.05)',
                 zIndex: 0
             }} />
@@ -82,9 +82,9 @@ const HolographicCard = ({ children, className = '', style = {} }) => {
                     background: `linear-gradient(
                         105deg,
                         transparent 20%,
-                        rgba(197, 163, 255, 0.2) 25%,
+                        rgba(171, 21, 9, 0.2) 25%,
                         rgba(255, 255, 255, 0.8) 50%,
-                        rgba(197, 163, 255, 0.2) 75%,
+                        rgba(171, 21, 9, 0.2) 75%,
                         transparent 80%
                     )`,
                     backgroundSize: '200% 200%',
@@ -106,7 +106,7 @@ const HolographicCard = ({ children, className = '', style = {} }) => {
                     borderRadius: 'inherit',
                     background: `radial-gradient(
                         circle at var(--bg-x, 50%) var(--bg-y, 50%), 
-                        rgba(197, 163, 255, 0.4) 0%, 
+                        rgba(171, 21, 9, 0.4) 0%, 
                         transparent 60%
                     )`,
                     opacity: 0,

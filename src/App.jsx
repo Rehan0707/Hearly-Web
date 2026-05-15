@@ -77,7 +77,7 @@ const HearyPopupMockup = ({ screen }) => (
         <span style={{
           fontSize: '0.65rem',
           padding: '2px 8px',
-          background: 'rgba(197,163,255,0.1)',
+          background: 'rgba(171,21,9,0.1)',
           color: 'var(--brand-purple)',
           borderRadius: '20px',
           fontWeight: 600,
@@ -111,7 +111,7 @@ const HearyPopupMockup = ({ screen }) => (
                 }}
                 style={{
                   width: '4px',
-                  background: `linear-gradient(180deg, var(--brand-purple) 0%, rgba(197,163,255,0.3) 100%)`,
+                  background: `linear-gradient(180deg, var(--brand-purple) 0%, rgba(171,21,9,0.3) 100%)`,
                   borderRadius: '3px',
                 }}
               />
@@ -308,7 +308,7 @@ function App() {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(197,163,255,0.08) 0%, transparent 100%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(171,21,9,0.08) 0%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 0,
         }} 
@@ -363,7 +363,7 @@ function App() {
                   transform: 'translate(-50%, -50%)',
                   width: '120%',
                   height: '120%',
-                  background: 'radial-gradient(circle, rgba(197,163,255,0.06) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(171,21,9,0.06) 0%, transparent 70%)',
                   zIndex: -1,
                   filter: 'blur(60px)',
                 }} />
@@ -408,7 +408,7 @@ function App() {
                   transform: 'translate(-50%, -50%)',
                   width: '120%',
                   height: '120%',
-                  background: 'radial-gradient(circle, rgba(197,163,255,0.04) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(171,21,9,0.04) 0%, transparent 70%)',
                   zIndex: -1,
                   filter: 'blur(60px)',
                 }} />

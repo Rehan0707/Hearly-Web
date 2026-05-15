@@ -132,7 +132,7 @@ export function SpotlightCard({
         }
 
         [data-glow]:hover {
-          box-shadow: 0 8px 32px rgba(197, 163, 255, 0.12);
+          box-shadow: 0 8px 32px rgba(171, 21, 9, 0.12);
           transform: translateY(-2px);
         }
       `}</style>
