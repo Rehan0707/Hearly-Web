@@ -14,7 +14,7 @@ export default function DownloadSection() {
         style={{
           position: 'relative',
           width: '100%',
-          minHeight: '85vh',
+          minHeight: '95vh',
           borderRadius: '20px',
           overflow: 'hidden',
           background: '#0a0a0a',
@@ -38,7 +38,7 @@ export default function DownloadSection() {
             waveSpeed={0.3}
             waveAmplitude={0.8}
             particleSize={1.2}
-            lerpSpeed={0.05}
+            lerpSpeed={0.02}
             color="#C5A3FF"
             autoAnimate={false}
             particleVariance={0.8}
