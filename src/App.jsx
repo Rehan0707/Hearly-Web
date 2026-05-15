@@ -4,6 +4,7 @@ import Antigravity from './components/Antigravity';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import VideoShowcase from './components/VideoShowcase';
+import DownloadSection from './components/DownloadSection';
 import Features from './components/Features';
 import { motion } from 'framer-motion';
 import {
@@ -499,6 +500,11 @@ function App() {
           </section>
         </div>
       </main>
+
+      {/* ─── Download / Add to Chrome Section ─── */}
+      <div style={{ position: 'relative', zIndex: 1, marginBottom: '10px' }}>
+        <DownloadSection />
+      </div>
 
       <HearyFooter />
     </div>
