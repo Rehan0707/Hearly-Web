@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mic, History, Brain, Shield, Waves, Monitor, Zap, Globe } from 'lucide-react';
+import { Mic, Brain, Shield, Waves, Zap, Globe } from 'lucide-react';
+import { SpotlightCard } from './ui/spotlight-card';
 
 const features = [
   {
@@ -45,13 +46,60 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
       ease: [0.16, 1, 0.3, 1],
     }}
     viewport={{ once: true, margin: '-50px' }}
-    className="bento-card"
   >
-    <div className="feature-icon">
-      <Icon size={22} strokeWidth={1.8} />
-    </div>
-    <h3 style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 500 }}>{title}</h3>
-    <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>{description}</p>
+    <SpotlightCard
+      glowColor="purple"
+      style={{
+        padding: '36px 32px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0',
+        height: '100%',
+        cursor: 'default',
+      }}
+    >
+      <div
+        style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '14px',
+          background: 'linear-gradient(135deg, rgba(197,163,255,0.12) 0%, rgba(197,163,255,0.04) 100%)',
+          border: '1px solid rgba(197,163,255,0.15)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '24px',
+          color: 'var(--brand-purple)',
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
+        <Icon size={22} strokeWidth={1.8} />
+      </div>
+      <h3
+        style={{
+          marginBottom: '12px',
+          color: 'var(--text-primary)',
+          fontWeight: 500,
+          fontSize: '1.05rem',
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          fontSize: '0.92rem',
+          lineHeight: 1.7,
+          color: 'var(--text-secondary)',
+          position: 'relative',
+          zIndex: 2,
+        }}
+      >
+        {description}
+      </p>
+    </SpotlightCard>
   </motion.div>
 );
 

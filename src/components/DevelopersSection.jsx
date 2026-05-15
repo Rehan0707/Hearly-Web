@@ -134,6 +134,10 @@ export default function DevelopersSection() {
                 maxWidth: '660px',
                 minWidth: '400px',
                 scrollSnapAlign: 'start',
+                padding: '8px',
+                background: 'rgba(0,0,0,0.02)',
+                borderRadius: '28px',
+                border: '1px solid rgba(0,0,0,0.04)',
               }}
             >
               {/* Card */}
