@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import VideoShowcase from './components/VideoShowcase';
 import DownloadSection from './components/DownloadSection';
+import DevelopersSection from './components/DevelopersSection';
 import Features from './components/Features';
 import { motion } from 'framer-motion';
 import {
@@ -435,69 +436,8 @@ function App() {
 
           <div className="section-divider" />
 
-          {/* ─── CTA Section ─── */}
-          <section style={{ padding: '140px 0' }}>
-            <div className="section-container">
-              <motion.div
-                initial={{ opacity: 0, y: 40, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                viewport={{ once: true }}
-                style={{
-                  textAlign: 'center',
-                  padding: '100px 40px',
-                  background: 'linear-gradient(135deg, rgba(197,163,255,0.03) 0%, rgba(255,255,255,0.95) 50%, rgba(197,163,255,0.02) 100%)',
-                  borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--border-subtle)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.04)',
-                }}
-              >
-                {/* Top glow line */}
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: '20%',
-                  right: '20%',
-                  height: '1px',
-                  background: 'linear-gradient(90deg, transparent, rgba(197,163,255,0.3), transparent)',
-                }} />
-
-                <div className="tag" style={{ marginBottom: '32px', display: 'inline-flex' }}>
-                  <Headphones size={14} />
-                  Join the waitlist
-                </div>
-
-                <h2 style={{
-                  fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
-                  marginBottom: '24px',
-                  color: 'var(--text-primary)',
-                }}>
-                  Built for the{' '}
-                  <span className="gradient-text-purple">agent-first</span>
-                  {' '}era.
-                </h2>
-                <p style={{
-                  fontSize: '1.1rem',
-                  marginBottom: '48px',
-                  maxWidth: '600px',
-                  margin: '0 auto 48px',
-                }}>
-                  Join thousands of teams building the future of voice-first intelligence with Hearly.
-                </p>
-                <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="#" className="btn-primary">
-                    Get Early Access
-                    <ArrowRight size={18} />
-                  </a>
-                  <a href="#" className="btn-outline">
-                    View Documentation
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </section>
+          {/* ─── Developers Section ─── */}
+          <DevelopersSection />
         </div>
       </main>
 
