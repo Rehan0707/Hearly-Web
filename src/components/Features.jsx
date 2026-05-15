@@ -50,8 +50,8 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
     <div className="feature-icon">
       <Icon size={22} strokeWidth={1.8} />
     </div>
-    <h3 style={{ marginBottom: '12px', color: 'var(--text-white)', fontWeight: 600 }}>{title}</h3>
-    <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: 'var(--text-muted)' }}>{description}</p>
+    <h3 style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 500 }}>{title}</h3>
+    <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>{description}</p>
   </motion.div>
 );
 
@@ -71,9 +71,9 @@ const Features = () => {
             <Zap size={14} />
             Capabilities
           </div>
-          <h2 style={{ color: 'var(--text-white)', marginBottom: '20px' }}>
+          <h2 style={{ color: 'var(--text-primary)', marginBottom: '20px' }}>
             Everything you need.{' '}
-            <span style={{ color: 'var(--text-muted)' }}>Nothing you don't.</span>
+            <span style={{ color: 'var(--text-secondary)' }}>Nothing you don't.</span>
           </h2>
           <p style={{ maxWidth: '560px', margin: '0 auto', fontSize: '1.05rem' }}>
             Powerful tools designed for the next generation of voice-first applications and intelligent agents.

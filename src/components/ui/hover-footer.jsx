@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion"; // Changed from motion/react to framer-motion as it's more stable in some environments
-import { cn } from "../../lib/utils"; // Adjusted path
+import { motion } from "framer-motion";
+import { cn } from "../../lib/utils";
 
 export const TextHoverEffect = ({
   text,
@@ -47,11 +47,11 @@ export const TextHoverEffect = ({
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor="#C8EF44" />
-              <stop offset="25%" stopColor="#3ca2fa" />
-              <stop offset="50%" stopColor="#80eeb4" />
-              <stop offset="75%" stopColor="#C8EF44" />
-              <stop offset="100%" stopColor="#3ca2fa" />
+              <stop offset="0%" stopColor="#C5A3FF" />
+              <stop offset="25%" stopColor="#9B7BCC" />
+              <stop offset="50%" stopColor="#E0D0FF" />
+              <stop offset="75%" stopColor="#C5A3FF" />
+              <stop offset="100%" stopColor="#9B7BCC" />
             </>
           )}
         </linearGradient>
@@ -83,7 +83,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-700 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+        className="fill-transparent stroke-neutral-600 font-['Google_Sans_Flex'] text-7xl font-bold"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -94,8 +94,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-[#C8EF44] font-[helvetica] text-7xl font-bold 
-        dark:stroke-[#C8EF4499]"
+        className="fill-transparent stroke-[#C5A3FF] font-['Google_Sans_Flex'] text-7xl font-bold"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
@@ -116,7 +115,7 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-7xl font-bold"
+        className="fill-transparent font-['Google_Sans_Flex'] text-7xl font-bold"
       >
         {text}
       </text>
@@ -131,7 +130,7 @@ export const FooterBackgroundGradient = () => {
       className="absolute inset-0 z-0"
       style={{
         background:
-          "radial-gradient(125% 125% at 50% 10%, #FAFAFA 50%, rgba(200, 239, 68, 0.15) 100%)",
+          "radial-gradient(125% 125% at 50% 10%, #FFFFFF 50%, rgba(197, 163, 255, 0.08) 100%)",
       }}
     />
   );

@@ -7,10 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          lime: '#C8EF44',
-          blue: '#3ca2fa',
-        },
+        'brand-purple': '#C5A3FF',
+      },
+      fontFamily: {
+        display: ['Google Sans Flex', 'sans-serif'],
+        body: ['Google Sans Flex', 'sans-serif'],
       },
     },
   },

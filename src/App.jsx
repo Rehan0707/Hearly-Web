@@ -14,46 +14,6 @@ import logo from './assets/logo.png';
 import HearyFooter from './components/ui/HearlyFooter';
 
 
-/* ─── Custom Cursor ─── */
-const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-
-  useEffect(() => {
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseOver = (e) => {
-      if (e.target.tagName.toLowerCase() === 'a' || e.target.tagName.toLowerCase() === 'button' || e.target.closest('a') || e.target.closest('button')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
-    };
-
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', handleMouseOver);
-
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-      window.removeEventListener('mouseover', handleMouseOver);
-    };
-  }, []);
-
-  return (
-    <motion.div
-      className="custom-cursor"
-      animate={{
-        x: mousePosition.x - 12,
-        y: mousePosition.y - 12,
-        scale: isHovering ? 2.5 : 1,
-      }}
-      transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 0.5 }}
-    />
-  );
-};
-
 /* ─── Section Header ─── */
 const SectionHeader = ({ tag, tagIcon: TagIcon, title, titleHighlight, description }) => (
   <motion.div
@@ -69,18 +29,18 @@ const SectionHeader = ({ tag, tagIcon: TagIcon, title, titleHighlight, descripti
         {tag}
       </div>
     )}
-    <h2 style={{ marginBottom: '20px', color: 'var(--text-white)' }}>
+    <h2 style={{ marginBottom: '20px', color: 'var(--text-primary)' }}>
       {title}{' '}
-      {titleHighlight && <span style={{ color: 'var(--text-muted)' }}>{titleHighlight}</span>}
+      {titleHighlight && <span style={{ color: 'var(--text-secondary)' }}>{titleHighlight}</span>}
     </h2>
     <p style={{ fontSize: '1.05rem', marginBottom: '32px' }}>{description}</p>
     <a href="#" style={{
       display: 'inline-flex',
       alignItems: 'center',
       gap: '8px',
-      color: 'var(--brand-lime)',
-      fontFamily: 'var(--font-heading)',
-      fontWeight: 600,
+      color: 'var(--brand-purple)',
+      fontFamily: 'var(--font-body)',
+      fontWeight: 500,
       fontSize: '0.95rem',
       textDecoration: 'none',
       transition: 'gap 0.3s ease',
@@ -96,7 +56,7 @@ const HearyPopupMockup = ({ screen }) => (
     {/* Titlebar */}
     <div style={{
       padding: '16px 20px',
-      borderBottom: '1px solid var(--border-dark)',
+      borderBottom: '1px solid var(--border-subtle)',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -105,24 +65,24 @@ const HearyPopupMockup = ({ screen }) => (
         <img src={logo} alt="Hearly" style={{ width: '18px', height: '18px', objectFit: 'contain', borderRadius: '4px' }} />
         <span style={{
           fontSize: '0.9rem',
-          fontFamily: 'var(--font-heading)',
+          fontFamily: 'var(--font-body)',
           fontWeight: 700,
-          color: 'var(--text-white)',
+          color: 'var(--text-primary)',
         }}>
           Hearly
         </span>
         <span style={{
           fontSize: '0.65rem',
           padding: '2px 8px',
-          background: 'rgba(200,239,68,0.1)',
-          color: 'var(--brand-lime)',
+          background: 'rgba(197,163,255,0.1)',
+          color: 'var(--brand-purple)',
           borderRadius: '20px',
           fontWeight: 600,
         }}>
           LIVE
         </span>
       </div>
-      <Settings size={16} color="#444" />
+      <Settings size={16} color="#666" />
     </div>
 
     {/* Content */}
@@ -148,18 +108,18 @@ const HearyPopupMockup = ({ screen }) => (
                 }}
                 style={{
                   width: '4px',
-                  background: `linear-gradient(180deg, var(--brand-lime) 0%, rgba(200,239,68,0.3) 100%)`,
+                  background: `linear-gradient(180deg, var(--brand-purple) 0%, rgba(197,163,255,0.3) 100%)`,
                   borderRadius: '3px',
                 }}
               />
             ))}
           </div>
-          <h3 style={{ fontSize: '1.3rem', color: 'var(--text-white)', fontFamily: 'var(--font-heading)' }}>
+          <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)', fontFamily: 'var(--font-body)' }}>
             Enrolling Speaker
           </h3>
           <p style={{
             fontSize: '0.88rem',
-            color: 'var(--text-muted)',
+            color: 'var(--text-secondary)',
             lineHeight: 1.6,
           }}>
             Say "Hello Hearly" to start the voice identification process.
@@ -171,12 +131,12 @@ const HearyPopupMockup = ({ screen }) => (
           }}>
             <button style={{
               flex: 1,
-              background: 'var(--brand-lime)',
-              color: '#000',
+              background: 'var(--brand-purple)',
+              color: '#1a1a1a',
               border: 'none',
               padding: '14px',
               borderRadius: 'var(--radius-sm)',
-              fontFamily: 'var(--font-heading)',
+              fontFamily: 'var(--font-body)',
               fontWeight: 700,
               fontSize: '0.9rem',
               cursor: 'pointer',
@@ -185,9 +145,9 @@ const HearyPopupMockup = ({ screen }) => (
             </button>
             <button style={{
               padding: '14px 18px',
-              background: 'rgba(0,0,0,0.04)',
-              color: 'var(--text-white)',
-              border: '1px solid var(--border-dark)',
+              background: 'rgba(255,255,255,0.04)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-subtle)',
               borderRadius: 'var(--radius-sm)',
               cursor: 'pointer',
             }}>
@@ -202,8 +162,8 @@ const HearyPopupMockup = ({ screen }) => (
           <h3 style={{
             fontSize: '1.1rem',
             marginBottom: '4px',
-            color: 'var(--text-white)',
-            fontFamily: 'var(--font-heading)',
+            color: 'var(--text-primary)',
+            fontFamily: 'var(--font-body)',
           }}>
             Recent Meetings
           </h3>
@@ -226,7 +186,7 @@ const HearyPopupMockup = ({ screen }) => (
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                border: '1px solid rgba(0,0,0,0.03)',
+                border: '1px solid var(--border-subtle)',
                 transition: 'all 0.2s ease',
                 cursor: 'pointer',
               }}
@@ -235,26 +195,26 @@ const HearyPopupMockup = ({ screen }) => (
                 <div style={{
                   fontSize: '0.92rem',
                   fontWeight: 600,
-                  fontFamily: 'var(--font-heading)',
-                  color: 'var(--text-white)',
+                  fontFamily: 'var(--font-body)',
+                  color: 'var(--text-primary)',
                   marginBottom: '4px',
                 }}>
                   {m.title}
                 </div>
-                <div style={{ fontSize: '0.75rem', color: '#555', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'flex', gap: '8px', alignItems: 'center' }}>
                   {m.time}
-                  <span style={{ color: '#333' }}>•</span>
+                  <span style={{ color: 'var(--text-dim)' }}>•</span>
                   <Users size={11} /> {m.speakers}
                 </div>
               </div>
               <div style={{
                 fontSize: '0.72rem',
-                color: 'var(--brand-lime)',
+                color: 'var(--brand-purple)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '5px',
                 fontWeight: 600,
-                fontFamily: 'var(--font-heading)',
+                fontFamily: 'var(--font-body)',
               }}>
                 <CheckCircle size={13} />
                 {m.status}
@@ -269,7 +229,14 @@ const HearyPopupMockup = ({ screen }) => (
 
 /* ─── Main App ─── */
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 600);
+    };
+    window.addEventListener('scroll', handleScroll);
+    
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -287,6 +254,7 @@ function App() {
     }
     rafId = requestAnimationFrame(raf);
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       lenis.destroy();
       cancelAnimationFrame(rafId);
     };
@@ -294,18 +262,20 @@ function App() {
 
   return (
     <div className="app">
-      <CustomCursor />
-      
       {/* Antigravity Particle Background */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 0,
-        pointerEvents: 'auto',
-      }}>
+      <motion.div 
+        animate={{ opacity: isScrolled ? 0 : 1 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          pointerEvents: isScrolled ? 'none' : 'auto',
+        }}
+      >
         <Antigravity
           count={350}
           magnetRadius={8}
@@ -313,8 +283,8 @@ function App() {
           waveSpeed={0.3}
           waveAmplitude={0.8}
           particleSize={1.2}
-          lerpSpeed={0.025}
-          color="#C8EF44"
+          lerpSpeed={0.05}
+          color="#C5A3FF"
           autoAnimate={false}
           particleVariance={0.8}
           rotationSpeed={0.05}
@@ -323,19 +293,23 @@ function App() {
           particleShape="capsule"
           fieldStrength={8}
         />
-      </div>
+      </motion.div>
 
       {/* Ambient glow overlay */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(200,239,68,0.03) 0%, transparent 100%)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
+      <motion.div 
+        animate={{ opacity: isScrolled ? 0 : 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(197,163,255,0.08) 0%, transparent 100%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }} 
+      />
 
       <Navbar />
 
@@ -383,7 +357,7 @@ function App() {
                   transform: 'translate(-50%, -50%)',
                   width: '120%',
                   height: '120%',
-                  background: 'radial-gradient(circle, rgba(200,239,68,0.04) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(197,163,255,0.06) 0%, transparent 70%)',
                   zIndex: -1,
                   filter: 'blur(60px)',
                 }} />
@@ -428,7 +402,7 @@ function App() {
                   transform: 'translate(-50%, -50%)',
                   width: '120%',
                   height: '120%',
-                  background: 'radial-gradient(circle, rgba(0,0,0,0.02) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(197,163,255,0.04) 0%, transparent 70%)',
                   zIndex: -1,
                   filter: 'blur(60px)',
                 }} />
@@ -467,11 +441,12 @@ function App() {
                 style={{
                   textAlign: 'center',
                   padding: '100px 40px',
-                  background: 'linear-gradient(135deg, rgba(200,239,68,0.06) 0%, rgba(255,255,255,0.95) 50%, rgba(200,239,68,0.03) 100%)',
+                  background: 'linear-gradient(135deg, rgba(197,163,255,0.03) 0%, rgba(255,255,255,0.95) 50%, rgba(197,163,255,0.02) 100%)',
                   borderRadius: 'var(--radius-xl)',
-                  border: '1px solid var(--border-dark)',
+                  border: '1px solid var(--border-subtle)',
                   position: 'relative',
                   overflow: 'hidden',
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.04)',
                 }}
               >
                 {/* Top glow line */}
@@ -481,7 +456,7 @@ function App() {
                   left: '20%',
                   right: '20%',
                   height: '1px',
-                  background: 'linear-gradient(90deg, transparent, rgba(200,239,68,0.3), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(197,163,255,0.3), transparent)',
                 }} />
 
                 <div className="tag" style={{ marginBottom: '32px', display: 'inline-flex' }}>
@@ -492,10 +467,10 @@ function App() {
                 <h2 style={{
                   fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
                   marginBottom: '24px',
-                  color: 'var(--text-white)',
+                  color: 'var(--text-primary)',
                 }}>
                   Built for the{' '}
-                  <span className="gradient-text-lime">agent-first</span>
+                  <span className="gradient-text-purple">agent-first</span>
                   {' '}era.
                 </h2>
                 <p style={{
@@ -507,11 +482,11 @@ function App() {
                   Join thousands of teams building the future of voice-first intelligence with Hearly.
                 </p>
                 <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="#" className="btn-lime">
+                  <a href="#" className="btn-primary">
                     Get Early Access
                     <ArrowRight size={18} />
                   </a>
-                  <a href="#" className="btn-dark">
+                  <a href="#" className="btn-outline">
                     View Documentation
                   </a>
                 </div>

@@ -114,7 +114,7 @@ const AntigravityInner = ({
       intensity.current = Math.max(0, intensity.current - decaySpeed);
     }
 
-    const smoothFactor = 0.015;
+    const smoothFactor = 0.08;
     virtualMouse.current.x += (destX - virtualMouse.current.x) * smoothFactor;
     virtualMouse.current.y += (destY - virtualMouse.current.y) * smoothFactor;
 
