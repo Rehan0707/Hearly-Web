@@ -20,7 +20,7 @@ export default function DownloadSection() {
           background: '#0a0a0a',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
         }}
       >
         {/* Particle background — same as homepage */}
@@ -50,12 +50,12 @@ export default function DownloadSection() {
           />
         </div>
 
-        {/* Content — bottom-left aligned */}
+        {/* Content — vertically centered on the left */}
         <div
           style={{
             position: 'relative',
             zIndex: 2,
-            padding: '0 60px 72px',
+            padding: '0 80px',
           }}
         >
           <h2
