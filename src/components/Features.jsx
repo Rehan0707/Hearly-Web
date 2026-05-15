@@ -1,54 +1,110 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mic, History, Settings } from 'lucide-react';
+import { Mic, History, Brain, Shield, Waves, Monitor, Zap, Globe } from 'lucide-react';
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
-  <motion.div 
-    whileHover={{ y: -5 }}
-    style={{ 
-      padding: '40px', 
-      background: '#fff', 
-      borderRadius: '24px', 
-      border: '1px solid #e8eaed',
-      display: 'flex', 
-      flexDirection: 'column', 
-      gap: '20px',
-      textAlign: 'left'
+const features = [
+  {
+    icon: Mic,
+    title: "Speaker Identification",
+    description: "Identify and attribute voices in real-time with advanced MFCC analysis and voiceprint matching.",
+  },
+  {
+    icon: Waves,
+    title: "Real-time Transcription",
+    description: "Live speech-to-text with sub-200ms latency. Powered by Deepgram's neural speech models.",
+  },
+  {
+    icon: Brain,
+    title: "AI Meeting Summaries",
+    description: "Automatic action items, decisions, and key takeaways generated from every conversation.",
+  },
+  {
+    icon: Shield,
+    title: "End-to-End Encryption",
+    description: "256-bit AES encryption with local processing. Your voice data never leaves your device.",
+  },
+  {
+    icon: Zap,
+    title: "Emotion Detection",
+    description: "Detect sentiment, confidence, and engagement levels across speakers in real-time.",
+  },
+  {
+    icon: Globe,
+    title: "Cross-Platform",
+    description: "Available on macOS, Windows, and Linux. Seamless sync across all your devices.",
+  },
+];
+
+const FeatureCard = ({ icon: Icon, title, description, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{
+      duration: 0.6,
+      delay: index * 0.08,
+      ease: [0.16, 1, 0.3, 1],
     }}
+    viewport={{ once: true, margin: '-50px' }}
+    className="bento-card"
   >
-    <div style={{ width: '48px', height: '48px', background: '#f8f9fa', borderRadius: '12px', display: 'grid', placeItems: 'center', color: '#1f1f1f' }}>
-      <Icon size={24} />
+    <div className="feature-icon">
+      <Icon size={22} strokeWidth={1.8} />
     </div>
-    <h3 style={{ fontSize: '1.5rem', fontWeight: 500 }}>{title}</h3>
-    <p style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>{description}</p>
+    <h3 style={{ marginBottom: '12px', color: 'var(--text-white)', fontWeight: 600 }}>{title}</h3>
+    <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: 'var(--text-muted)' }}>{description}</p>
   </motion.div>
 );
 
 const Features = () => {
   return (
-    <section id="features" className="section-container" style={{ textAlign: 'center', paddingBottom: '120px' }}>
-      <div style={{ marginBottom: '80px' }}>
-        <h2 style={{ fontSize: '3rem', marginBottom: '16px' }}>Built for the future.</h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Powerful tools designed for the next generation of agents.</p>
+    <section id="features" style={{ padding: '120px 0' }}>
+      <div className="section-container">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          style={{ textAlign: 'center', marginBottom: '72px' }}
+        >
+          <div className="tag" style={{ marginBottom: '24px', display: 'inline-flex' }}>
+            <Zap size={14} />
+            Capabilities
+          </div>
+          <h2 style={{ color: 'var(--text-white)', marginBottom: '20px' }}>
+            Everything you need.{' '}
+            <span style={{ color: 'var(--text-muted)' }}>Nothing you don't.</span>
+          </h2>
+          <p style={{ maxWidth: '560px', margin: '0 auto', fontSize: '1.05rem' }}>
+            Powerful tools designed for the next generation of voice-first applications and intelligent agents.
+          </p>
+        </motion.div>
+
+        {/* Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '16px',
+        }}>
+          {features.map((feature, i) => (
+            <FeatureCard key={feature.title} {...feature} index={i} />
+          ))}
+        </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px' }}>
-        <FeatureCard 
-          icon={Mic} 
-          title="Smart Enrollment" 
-          description="Identify and enroll voices with precision using advanced MFCC analysis."
-        />
-        <FeatureCard 
-          icon={History} 
-          title="Intelligent History" 
-          description="Browse past meetings with AI-generated summaries and searchable transcripts."
-        />
-        <FeatureCard 
-          icon={Settings} 
-          title="Seamless Control" 
-          description="Integrated controls that allow you to manage your agents effortlessly."
-        />
-      </div>
+      {/* Responsive styles */}
+      <style>{`
+        @media (max-width: 992px) {
+          #features > div > div:last-child {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 640px) {
+          #features > div > div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
