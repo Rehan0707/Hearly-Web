@@ -8,40 +8,44 @@ export default function VideoShowcase() {
   const sectionRef = useRef(null);
   const videoContainerRef = useRef(null);
 
+  // GSAP scroll animation
   useEffect(() => {
     const section = sectionRef.current;
     const videoContainer = videoContainerRef.current;
 
-    // Initial state: video starts far below and slightly scaled down
     gsap.set(videoContainer, {
-      y: 300,
-      scale: 0.92,
+      y: 280,
+      scale: 0.85,
       opacity: 0,
     });
 
-    // Main reveal animation — scrubbed to scroll
-    gsap.to(videoContainer, {
-      y: 0,
-      scale: 1,
-      opacity: 1,
-      ease: 'none',
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top 90%',
-        end: 'top 20%',
-        scrub: 1.5,
+        start: 'top 95%',
+        end: 'top 15%',
+        scrub: 1.2,
       },
     });
 
-    // Continued parallax lift as user scrolls past
-    gsap.to(videoContainer, {
-      y: -80,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 20%',
-        end: 'bottom top',
-        scrub: 2,
+    tl.to(videoContainer, {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+      ease: 'power2.out',
+    });
+
+    // Subtle parallax on continued scroll
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'center center',
+      end: 'bottom top',
+      scrub: 1.5,
+      onUpdate: (self) => {
+        gsap.set(videoContainer, {
+          y: self.progress * -40,
+        });
       },
     });
 
@@ -54,11 +58,12 @@ export default function VideoShowcase() {
     <section
       ref={sectionRef}
       style={{
-        padding: '20px 0 160px',
+        padding: '20px 0 140px',
         position: 'relative',
         overflow: 'visible',
       }}
     >
+      {/* Full-width container with 10px padding */}
       <div
         style={{
           width: '100%',
@@ -76,6 +81,7 @@ export default function VideoShowcase() {
             overflow: 'hidden',
             background: '#0a0a0a',
             boxShadow: '0 40px 120px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.06)',
+            cursor: 'pointer',
             transform: 'translateZ(0)',
             willChange: 'transform, opacity',
           }}
@@ -92,17 +98,18 @@ export default function VideoShowcase() {
               width: '100%',
               height: '100%',
               border: 'none',
+              zIndex: 1,
             }}
           />
 
-          {/* Subtle inner border */}
+          {/* Subtle inner border for depth */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
               borderRadius: '16px',
               border: '1px solid rgba(255, 255, 255, 0.06)',
-              zIndex: 2,
+              zIndex: 5,
               pointerEvents: 'none',
             }}
           />
