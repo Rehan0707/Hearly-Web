@@ -11,7 +11,7 @@ const AntigravityInner = ({
   waveAmplitude = 1,
   particleSize = 2,
   lerpSpeed = 0.1,
-  color = '#FF9FFC',
+  color = '#AB1509',
   autoAnimate = false,
   particleVariance = 1,
   rotationSpeed = 0,
@@ -29,10 +29,10 @@ const AntigravityInner = ({
   const virtualMouse = useRef({ x: 0, y: 0 });
   const intensity = useRef(0);
 
-  
+
   // Track pointer globally so it works even if canvas is blocked by other elements
   const globalPointer = useRef({ x: 0, y: 0 });
-  
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       globalPointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -198,10 +198,10 @@ const AntigravityInner = ({
 
 const Antigravity = (props) => {
   return (
-    <Canvas 
+    <Canvas
       camera={{ position: [0, 0, 50], fov: 35 }}
       dpr={[1, 2]}
-      gl={{ 
+      gl={{
         powerPreference: "high-performance",
         alpha: true,
         antialias: true,

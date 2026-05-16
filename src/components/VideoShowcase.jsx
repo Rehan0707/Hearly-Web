@@ -73,6 +73,7 @@ export default function VideoShowcase() {
       >
         <div
           ref={videoContainerRef}
+          className="cursor-target"
           style={{
             position: 'relative',
             width: '100%',
@@ -88,7 +89,7 @@ export default function VideoShowcase() {
         >
           {/* YouTube iframe — autoplay muted */}
           <iframe
-            src="https://www.youtube.com/embed/XM_Zfihnkb4?autoplay=1&mute=1&loop=1&playlist=XM_Zfihnkb4&rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0"
+            src="https://www.youtube.com/embed/67_CU8E9sdY?autoplay=1&mute=1&loop=1&playlist=67_CU8E9sdY&rel=0&modestbranding=1&playsinline=1&controls=0&showinfo=0"
             title="Hearly Demo"
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
@@ -99,6 +100,16 @@ export default function VideoShowcase() {
               height: '100%',
               border: 'none',
               zIndex: 1,
+            }}
+          />
+
+          {/* Transparent interaction layer to prevent iframe from swallowing mouse events */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 10,
+              background: 'transparent',
             }}
           />
 

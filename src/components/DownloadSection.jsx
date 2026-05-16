@@ -37,9 +37,9 @@ export default function DownloadSection() {
             ringRadius={8}
             waveSpeed={0.3}
             waveAmplitude={0.8}
-            particleSize={1.2}
+            particleSize={0.9}
             lerpSpeed={0.02}
-            color="#C5A3FF"
+            color="#AB1509"
             autoAnimate={false}
             particleVariance={0.8}
             rotationSpeed={0.05}
@@ -71,7 +71,7 @@ export default function DownloadSection() {
             }}
           >
             Add Hearly to{' '}
-            <span style={{ color: 'var(--brand-purple)' }}>Chrome</span>
+            <span style={{ color: 'var(--brand-blue)' }}>Chrome</span>
           </h2>
 
           <div
@@ -84,11 +84,12 @@ export default function DownloadSection() {
             {/* Primary CTA */}
             <a
               href="#"
+              className="cursor-target"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                background: '#FFFFFF',
+                background: '#fff7D3',
                 color: '#0a0a0a',
                 padding: '14px 28px',
                 borderRadius: '100px',
@@ -100,12 +101,12 @@ export default function DownloadSection() {
                 border: 'none',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--brand-purple)';
-                e.currentTarget.style.color = '#0a0a0a';
+                e.currentTarget.style.background = '#AB1509';
+                e.currentTarget.style.color = '#fff7D3';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#FFFFFF';
+                e.currentTarget.style.background = '#fff7D3';
                 e.currentTarget.style.color = '#0a0a0a';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
@@ -116,6 +117,7 @@ export default function DownloadSection() {
             {/* Secondary CTA */}
             <a
               href="#"
+              className="cursor-target"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',

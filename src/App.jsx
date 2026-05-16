@@ -7,13 +7,14 @@ import VideoShowcase from './components/VideoShowcase';
 import DownloadSection from './components/DownloadSection';
 import DevelopersSection from './components/DevelopersSection';
 import Features from './components/Features';
+import TargetCursor from './components/TargetCursor';
 import { motion } from 'framer-motion';
 import {
   Mic, History, Settings, CheckCircle, ArrowRight,
   Play, Headphones, BarChart3, Users, Globe, Code2, Briefcase,
   Mail, Heart
 } from 'lucide-react';
-import logo from './assets/logo.png';
+import logo from './assets/logo.svg';
 import HearyFooter from './components/ui/HearlyFooter';
 
 
@@ -37,11 +38,11 @@ const SectionHeader = ({ tag, tagIcon: TagIcon, title, titleHighlight, descripti
       {titleHighlight && <span style={{ color: 'var(--text-secondary)' }}>{titleHighlight}</span>}
     </h2>
     <p style={{ fontSize: '1.05rem', marginBottom: '32px' }}>{description}</p>
-    <a href="#" style={{
+    <a href="#" className="cursor-target" style={{
       display: 'inline-flex',
       alignItems: 'center',
       gap: '8px',
-      color: 'var(--brand-purple)',
+      color: 'var(--brand-crimson)',
       fontFamily: 'var(--font-body)',
       fontWeight: 500,
       fontSize: '0.95rem',
@@ -55,7 +56,7 @@ const SectionHeader = ({ tag, tagIcon: TagIcon, title, titleHighlight, descripti
 
 /* ─── Heary Popup Mockup ─── */
 const HearyPopupMockup = ({ screen }) => (
-  <div className="mockup-card">
+  <div className="mockup-card cursor-target">
     {/* Titlebar */}
     <div style={{
       padding: '16px 20px',
@@ -70,22 +71,22 @@ const HearyPopupMockup = ({ screen }) => (
           fontSize: '0.9rem',
           fontFamily: 'var(--font-body)',
           fontWeight: 700,
-          color: 'var(--text-primary)',
+          color: '#FFFFFF',
         }}>
           Hearly
         </span>
         <span style={{
           fontSize: '0.65rem',
           padding: '2px 8px',
-          background: 'rgba(171,21,9,0.1)',
-          color: 'var(--brand-purple)',
+          background: 'rgba(171, 21, 9, 0.1)',
+          color: 'var(--brand-crimson)',
           borderRadius: '20px',
           fontWeight: 600,
         }}>
           LIVE
         </span>
       </div>
-      <Settings size={16} color="#666" />
+      <Settings size={16} color="#FFFFFF" opacity={0.6} />
     </div>
 
     {/* Content */}
@@ -111,18 +112,18 @@ const HearyPopupMockup = ({ screen }) => (
                 }}
                 style={{
                   width: '4px',
-                  background: `linear-gradient(180deg, var(--brand-purple) 0%, rgba(171,21,9,0.3) 100%)`,
+                  background: `linear-gradient(180deg, var(--brand-crimson) 0%, rgba(171, 21, 9, 0.3) 100%)`,
                   borderRadius: '3px',
                 }}
               />
             ))}
           </div>
-          <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)', fontFamily: 'var(--font-body)' }}>
+          <h3 style={{ fontSize: '1.3rem', color: '#FFFFFF', fontFamily: 'var(--font-body)' }}>
             Enrolling Speaker
           </h3>
           <p style={{
             fontSize: '0.88rem',
-            color: 'var(--text-secondary)',
+            color: 'rgba(255, 255, 255, 0.7)',
             lineHeight: 1.6,
           }}>
             Say "Hello Hearly" to start the voice identification process.
@@ -132,10 +133,10 @@ const HearyPopupMockup = ({ screen }) => (
             gap: '8px',
             marginTop: '16px',
           }}>
-            <button style={{
+            <button className="cursor-target" style={{
               flex: 1,
-              background: 'var(--brand-purple)',
-              color: '#1a1a1a',
+              background: 'var(--brand-crimson)',
+              color: '#FFFFFF',
               border: 'none',
               padding: '14px',
               borderRadius: 'var(--radius-sm)',
@@ -149,8 +150,8 @@ const HearyPopupMockup = ({ screen }) => (
             <button style={{
               padding: '14px 18px',
               background: 'rgba(255,255,255,0.04)',
-              color: 'var(--text-primary)',
-              border: '1px solid var(--border-subtle)',
+              color: '#FFFFFF',
+              border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: 'var(--radius-sm)',
               cursor: 'pointer',
             }}>
@@ -165,7 +166,7 @@ const HearyPopupMockup = ({ screen }) => (
           <h3 style={{
             fontSize: '1.1rem',
             marginBottom: '4px',
-            color: 'var(--text-primary)',
+            color: '#FFFFFF',
             fontFamily: 'var(--font-body)',
           }}>
             Recent Meetings
@@ -184,35 +185,48 @@ const HearyPopupMockup = ({ screen }) => (
               viewport={{ once: true }}
               style={{
                 padding: '14px 16px',
-                background: 'rgba(0,0,0,0.02)',
+                background: 'rgba(255,255,255,0.02)',
                 borderRadius: 'var(--radius-sm)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid rgba(255,255,255,0.05)',
                 transition: 'all 0.2s ease',
                 cursor: 'pointer',
               }}
             >
-              <div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <div style={{
-                  fontSize: '0.92rem',
-                  fontWeight: 600,
-                  fontFamily: 'var(--font-body)',
-                  color: 'var(--text-primary)',
-                  marginBottom: '4px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
+                  background: 'rgba(171, 21, 9, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
-                  {m.title}
+                  <img src={logo} alt="" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  {m.time}
-                  <span style={{ color: 'var(--text-dim)' }}>•</span>
-                  <Users size={11} /> {m.speakers}
+                <div>
+                  <div style={{
+                    fontSize: '0.92rem',
+                    fontWeight: 600,
+                    fontFamily: 'var(--font-body)',
+                    color: '#FFFFFF',
+                    marginBottom: '4px',
+                  }}>
+                    {m.title}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.5)', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    {m.time}
+                    <span style={{ color: 'rgba(255, 255, 255, 0.3)' }}>•</span>
+                    <Users size={11} /> {m.speakers}
+                  </div>
                 </div>
               </div>
               <div style={{
                 fontSize: '0.72rem',
-                color: 'var(--brand-purple)',
+                color: 'var(--brand-crimson)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '5px',
@@ -233,13 +247,13 @@ const HearyPopupMockup = ({ screen }) => (
 /* ─── Main App ─── */
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 600);
     };
     window.addEventListener('scroll', handleScroll);
-    
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -265,8 +279,15 @@ function App() {
 
   return (
     <div className="app">
+      {/* Custom Target Cursor */}
+      <TargetCursor
+        spinDuration={2}
+        hideDefaultCursor={true}
+        parallaxOn={true}
+      />
+
       {/* Antigravity Particle Background */}
-      <motion.div 
+      <motion.div
         animate={{ opacity: isScrolled ? 0 : 1 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
         style={{
@@ -285,9 +306,9 @@ function App() {
           ringRadius={8}
           waveSpeed={0.3}
           waveAmplitude={0.8}
-          particleSize={1.2}
+          particleSize={0.9}
           lerpSpeed={0.05}
-          color="#C5A3FF"
+          color="#AB1509"
           autoAnimate={false}
           particleVariance={0.8}
           rotationSpeed={0.05}
@@ -299,7 +320,7 @@ function App() {
       </motion.div>
 
       {/* Ambient glow overlay */}
-      <motion.div 
+      <motion.div
         animate={{ opacity: isScrolled ? 0 : 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
         style={{
@@ -308,10 +329,10 @@ function App() {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(171,21,9,0.08) 0%, transparent 100%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(171, 21, 9, 0.08) 0%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 0,
-        }} 
+        }}
       />
 
       <Navbar />

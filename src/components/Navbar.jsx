@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <nav
       style={{
-        background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'var(--bg-primary)',
+        background: scrolled ? 'rgba(255, 247, 211, 0.9)' : '#fff7D3',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: `1px solid ${scrolled ? 'rgba(0,0,0,0.05)' : 'transparent'}`,
       }}
@@ -47,7 +47,7 @@ export default function Navbar() {
         {/* Center — Nav Links (Desktop) */}
         <div className="nav-links">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href}>
+            <a key={link.label} href={link.href} className="cursor-target">
               {link.label}
               {link.hasDropdown && <ChevronDown size={14} strokeWidth={2} />}
             </a>
@@ -59,12 +59,13 @@ export default function Navbar() {
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <a
           href="#"
+          className="cursor-target"
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            background: '#1a1a1a',
-            color: '#FFFFFF',
+            background: '#AB1509',
+            color: '#fff7D3',
             padding: '10px 24px',
             borderRadius: 'var(--radius-pill)',
             fontFamily: 'var(--font-body)',
@@ -108,7 +109,7 @@ export default function Navbar() {
               top: '100%',
               left: 0,
               right: 0,
-              background: 'rgba(255, 255, 255, 0.98)',
+              background: 'rgba(255, 247, 211, 0.98)',
               backdropFilter: 'blur(20px)',
               borderBottom: '1px solid var(--border-subtle)',
               padding: '20px 24px',

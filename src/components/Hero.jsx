@@ -69,7 +69,7 @@ export default function Hero() {
         }}
       >
         Experience liftoff with the{' '}
-        <span className="gradient-text-purple">next-gen</span>{' '}
+        <span className="gradient-text-crimson">next-gen</span>{' '}
         voice intelligence
       </motion.h1>
 
@@ -79,8 +79,8 @@ export default function Hero() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         style={{
-          background: 'var(--brand-purple-dim)',
-          color: 'var(--brand-purple)',
+          background: 'var(--brand-crimson-dim)',
+          color: 'var(--brand-crimson)',
           padding: '6px 14px',
           borderRadius: 'var(--radius-pill)',
           fontSize: '0.75rem',
@@ -88,7 +88,7 @@ export default function Hero() {
           letterSpacing: '0.05em',
           textTransform: 'uppercase',
           marginBottom: '32px',
-          border: '1px solid var(--brand-purple-glow)',
+          border: '1px solid var(--brand-crimson-glow)',
         }}
       >
         Version 1
@@ -106,11 +106,11 @@ export default function Hero() {
           justifyContent: 'center',
         }}
       >
-        <a href="#" className="btn-primary">
+        <a href="#" className="btn-primary cursor-target">
           <Globe size={18} strokeWidth={2} />
           Add to Chrome
         </a>
-        <a href="#features" className="btn-outline">
+        <a href="#features" className="btn-outline cursor-target">
           Explore use cases
         </a>
       </motion.div>

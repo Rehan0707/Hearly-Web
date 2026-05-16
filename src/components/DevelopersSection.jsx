@@ -3,13 +3,6 @@ import { motion } from 'framer-motion';
 
 const developers = [
   {
-    role: 'Frontend\ndeveloper',
-    name: 'UI/UX & Frontend',
-    image: '/images/dev-frontend.png',
-    description:
-      'Streamline UX development by leveraging browser-in-the-loop agents to automate repetitive tasks.',
-  },
-  {
     role: 'Backend\ndeveloper',
     name: 'Backend Engineer',
     image: '/images/dev-backend-1.png',
@@ -22,6 +15,13 @@ const developers = [
     image: '/images/dev-backend-2.png',
     description:
       'Design robust API architectures for agent orchestration and intelligent audio workflows.',
+  },
+  {
+    role: 'Frontend\ndeveloper',
+    name: 'UI/UX & Frontend',
+    image: '/images/dev-frontend.png',
+    description:
+      'Streamline UX development by leveraging browser-in-the-loop agents to automate repetitive tasks.',
   },
 ];
 
@@ -82,10 +82,7 @@ export default function DevelopersSection() {
               maxWidth: '550px',
             }}
           >
-            Built for{' '}
-            <span className="gradient-text-purple">developers</span>
-            <br />
-            for the agent-first era
+            Developers of <span className="gradient-text-crimson">Hearly</span>
           </h2>
           <p
             style={{

@@ -38,6 +38,7 @@ const features = [
 
 const FeatureCard = ({ icon: Icon, title, description, index }) => (
   <motion.div
+    className="cursor-target"
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{
@@ -61,13 +62,13 @@ const FeatureCard = ({ icon: Icon, title, description, index }) => (
           width: '48px',
           height: '48px',
           borderRadius: '14px',
-          background: 'linear-gradient(135deg, rgba(171,21,9,0.12) 0%, rgba(171,21,9,0.04) 100%)',
-          border: '1px solid rgba(171,21,9,0.15)',
+          background: 'linear-gradient(135deg, rgba(79, 255, 176, 0.12) 0%, rgba(79, 255, 176, 0.04) 100%)',
+          border: '1px solid rgba(79, 255, 176, 0.15)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           marginBottom: '24px',
-          color: 'var(--brand-purple)',
+          color: '#AB1509',
         }}
       >
         <Icon size={22} strokeWidth={1.8} />

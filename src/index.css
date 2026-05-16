@@ -15,18 +15,18 @@
 
 /* ─── Design Tokens ─── */
 :root {
-  --brand-purple: #C5A3FF;
-  --brand-purple-dim: rgba(197, 163, 255, 0.1);
-  --brand-purple-glow: rgba(197, 163, 255, 0.2);
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #FFFFFF;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #FFFFFF;
+  --brand-crimson: #AB1509;
+  --brand-crimson-dim: rgba(171, 21, 9, 0.1);
+  --brand-crimson-glow: rgba(171, 21, 9, 0.2);
+  --bg-primary: #fff7D3;
+  --bg-secondary: #fdf5d0;
+  --bg-card: rgba(255, 247, 211, 0.5);
+  --bg-card-hover: rgba(255, 247, 211, 0.8);
   --text-primary: #1A1A1A;
-  --text-secondary: #666666;
-  --text-dim: #999999;
-  --border-subtle: rgba(226, 232, 240, 0.6);
-  --border-glow: rgba(197, 163, 255, 0.3);
+  --text-secondary: #5C1D18;
+  --text-dim: #8C4B44;
+  --border-subtle: rgba(171, 21, 9, 0.12);
+  --border-glow: rgba(171, 21, 9, 0.3);
   --radius-sm: 14px;
   --radius-md: 24px;
   --radius-lg: 40px;
@@ -61,12 +61,17 @@ body {
 
 /* ─── Selection ─── */
 ::selection {
-  background: var(--brand-purple);
-  color: #000;
+  background: var(--brand-crimson);
+  color: #3D1A4E;
 }
 
 /* ─── Typography ─── */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -74,9 +79,17 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
-h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
-h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+h1 {
+  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
 
 p {
   font-family: var(--font-body);
@@ -92,11 +105,12 @@ p {
 }
 
 /* ─── Gradient Text ─── */
-.gradient-text-purple {
-  background: linear-gradient(135deg, var(--brand-purple) 0%, #B48DFF 50%, #8A64C0 100%);
+.gradient-text-crimson {
+  background: linear-gradient(135deg, #AB1509 0%, #D83C2E 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 /* ─── Navbar (Antigravity-style flat bar) ─── */
@@ -111,7 +125,7 @@ nav {
   align-items: center;
   padding: 0 40px;
   z-index: 1000;
-  background: var(--bg-primary);
+  background: #3D1A4E;
   border-bottom: 1px solid var(--border-subtle);
   transition: background 0.3s ease;
 }
@@ -148,8 +162,8 @@ nav {
 
 /* ─── Buttons ─── */
 .btn-primary {
-  background: var(--brand-purple);
-  color: #1a1a1a;
+  background: var(--brand-crimson);
+  color: #3D1A4E;
   padding: 12px 28px;
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
@@ -168,7 +182,7 @@ nav {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(197, 163, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(156, 167, 99, 0.35);
 }
 
 .btn-dark {
@@ -211,8 +225,8 @@ nav {
 }
 
 .btn-outline:hover {
-  border-color: var(--brand-purple);
-  background: rgba(197, 163, 255, 0.05);
+  border-color: var(--brand-crimson);
+  background: rgba(156, 167, 99, 0.06);
   transform: translateY(-2px);
 }
 
@@ -259,13 +273,13 @@ nav {
   align-items: center;
   gap: 8px;
   padding: 8px 18px;
-  background: rgba(197, 163, 255, 0.08);
-  border: 1px solid rgba(197, 163, 255, 0.15);
+  background: var(--brand-crimson-dim);
+  border: 1px solid var(--border-glow);
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--brand-purple);
+  color: var(--brand-crimson);
   letter-spacing: 0.02em;
 }
 
@@ -273,8 +287,8 @@ nav {
 .terminal {
   font-family: 'Courier New', monospace;
   font-size: 0.82rem;
-  color: var(--brand-purple);
-  background: rgba(245, 245, 245, 0.9);
+  color: var(--brand-crimson);
+  background: rgba(171, 21, 9, 0.03);
   backdrop-filter: blur(20px);
   padding: 28px;
   border-radius: var(--radius-md);
@@ -320,7 +334,7 @@ nav {
   font-family: var(--font-body);
   font-size: 2.4rem;
   font-weight: 500;
-  color: var(--brand-purple);
+  color: var(--brand-crimson);
   letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 8px;
@@ -346,18 +360,18 @@ nav {
   width: 52px;
   height: 52px;
   border-radius: var(--radius-sm);
-  background: rgba(197, 163, 255, 0.08);
-  border: 1px solid rgba(197, 163, 255, 0.12);
+  background: rgba(156, 167, 99, 0.08);
+  border: 1px solid rgba(156, 167, 99, 0.12);
   display: grid;
   place-items: center;
-  color: var(--brand-purple);
+  color: var(--brand-crimson);
   margin-bottom: 24px;
   transition: all 0.3s ease;
 }
 
 .bento-card:hover .feature-icon {
-  background: rgba(197, 163, 255, 0.15);
-  box-shadow: 0 0 20px rgba(197, 163, 255, 0.1);
+  background: rgba(156, 167, 99, 0.15);
+  box-shadow: 0 0 20px rgba(156, 167, 99, 0.1);
 }
 
 /* ─── Mockup Card ─── */
@@ -404,15 +418,22 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: clamp(2rem, 8vw, 3rem); }
-  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem); }
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
 
   nav {
     height: 56px;
     padding: 0 16px;
   }
 
-  .btn-primary, .btn-dark, .btn-outline {
+  .btn-primary,
+  .btn-dark,
+  .btn-outline {
     padding: 10px 22px;
     font-size: 0.85rem;
   }
